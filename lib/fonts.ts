@@ -13,7 +13,7 @@ export const fontSans = FontSans({
 
 export const fontSans2 = FontSans2({
   subsets: ["latin"],
-  variable: "--font-sans-2",
+  variable: "--font-sanx",
   display: "swap",
   weight: ["400", "500", "700"],
 });
