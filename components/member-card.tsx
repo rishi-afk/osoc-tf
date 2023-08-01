@@ -38,7 +38,7 @@ const MemberCard = ({ member }: Props) => {
             <h2
               className={cn(
                 "text-4xl font-bold text-center uppercase tracking-wider",
-                fontSans.className
+                fontSans.variable
               )}
             >
               {member.name}

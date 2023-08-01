@@ -28,7 +28,7 @@ export default function Home() {
           <span
             className={cn(
               "text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase italic leading-none font-bold tracking-tighter [-webkit-text-stroke:2px_#FF4747] text-transparent",
-              fontSans2.className
+              fontSans2.variable
             )}
           >
             {" '23"}

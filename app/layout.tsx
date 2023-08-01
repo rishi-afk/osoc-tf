@@ -35,7 +35,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "min-h-screen dark:bg-[#212121] bg-[#EFEFEF] before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/background-pattern.svg')] before:bg-cover before:bg-no-repeat dark:before:opacity-5 before:opacity-20 before:grayscale font-sans antialiased",
-          fontSans.className
+          fontSans.variable
         )}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
