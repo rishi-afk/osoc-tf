@@ -32,14 +32,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body
-        className={cn(
-          "min-h-screen dark:bg-[#212121] bg-[#EFEFEF] before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/background-pattern.svg')] before:bg-cover before:bg-no-repeat dark:before:opacity-10 before:opacity-20 before:grayscale font-sans antialiased",
-          fontSans.variable
-        )}
-      >
+      <body className={cn(fontSans.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative flex min-h-screen flex-col">
+          <div className="relative flex min-h-screen flex-col dark:bg-[#212121] bg-[#EFEFEF] before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/background-pattern.svg')] before:bg-cover before:bg-no-repeat dark:before:opacity-10 before:opacity-20 before:grayscale font-sans antialiased">
             <SiteHeader />
             <div className="flex-1">{children}</div>
             {/* <div className="w-full text-center py-8 z-10">
