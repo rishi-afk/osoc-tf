@@ -75,7 +75,7 @@ export function RegisterForm() {
         <DialogHeader>
           <DialogTitle>Register</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you are done.
+            Please enter your details and click register.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
