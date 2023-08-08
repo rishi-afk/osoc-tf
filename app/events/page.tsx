@@ -1,5 +1,4 @@
 import Event from "@/components/event-card";
-import { Separator } from "@/components/ui/separator";
 import { fontMono } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 

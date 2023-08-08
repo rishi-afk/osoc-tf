@@ -1,7 +1,9 @@
 import Image from "next/image";
 import React from "react";
+import { Icons } from "./icons";
+import { RegisterDialog } from "./register-dialog";
 import { RuleDialog } from "./rule-dialog";
-import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 
 type Props = {
@@ -16,10 +18,8 @@ const Event = ({ description, heading }: Props) => {
     <section className="flex lg:even:flex-row-reverse flex-col lg:flex-row items-center md:items-start gap-6 text-center md:text-left">
       <div>
         <h3 className="font-bold text-4xl">{heading}</h3>
-        <div className="flex gap-2 h-5 items-center mt-2 justify-center md:justify-start">
-          <Button variant={"link"} className="p-0 text-[#FF4747]">
-            Register
-          </Button>
+        <div className="flex gap-3 h-5 items-center mt-2 justify-center md:justify-start">
+          <RegisterDialog eventName={heading} />
           <Separator orientation="vertical" className="bg-foreground" />
           <RuleDialog
             eventName="Codezilla"
@@ -34,6 +34,10 @@ const Event = ({ description, heading }: Props) => {
           Quidem, ad. Nemo perspiciatis ut modi, dolor veniam repellendus quos
           iure corrupti a possimus quas!"
           />
+          <Separator orientation="vertical" className="bg-foreground" />
+          <Badge variant="outline" className="p-0">
+            <Icons.money size={18} />
+          </Badge>
         </div>
       </div>
       <p className="text-3xl">{description}</p>

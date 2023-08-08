@@ -131,6 +131,7 @@ export function RegisterForm() {
                 </FormItem>
               )}
             />
+
             <DialogFooter>
               <Button type="submit">Register</Button>
             </DialogFooter>

@@ -12,7 +12,7 @@ export function MainNav({ items }: MainNavProps) {
   return (
     <div className="flex justify-center items-center">
       {items?.length ? (
-        <nav className="flex gap-6 md:gap-12">
+        <nav className="flex gap-6 md:gap-8">
           {items?.map(
             (item, index) =>
               item.href && (

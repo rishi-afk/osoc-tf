@@ -1,14 +1,16 @@
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
 import { RegisterForm } from "@/components/register-form";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { fontMono, fontSans2 } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import { auth, SignInButton, SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <main className="relative container flex flex-col justify-center -mt-32 md:-mt-20 h-screen w-full ">
+      <main className="relative container flex flex-col justify-center -mt-32 md:-mt-20 h-screen w-full min-h-[600px]">
         <h3
           className={cn(
             "text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-light leading-none tracking-tighter dark:text-[#616161]  text-muted-foreground text-left"
@@ -35,7 +37,14 @@ export default function Home() {
           </span>
         </h1>
         <div className="mt-8 md:mt-16 flex flex-row gap-8 lg:gap-12 items-center">
-          <RegisterForm />
+          <SignUpButton mode="modal">
+            <Button
+              variant="link"
+              className="dark:text-[#D2D2D2] text-muted-foreground p-0 text-lg sm:text-xl md:text-2xl"
+            >
+              Register
+            </Button>
+          </SignUpButton>
           <Separator orientation="vertical" className="bg-[#FF4747]" />
           <Link
             href={"/events"}
