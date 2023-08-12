@@ -1,6 +1,4 @@
-import { authMiddleware, redirectToSignIn } from "@clerk/nextjs";
-
-const ADMINS = ["205122080@nitt.edu"];
+import { authMiddleware } from "@clerk/nextjs";
 
 export default authMiddleware({
   publicRoutes: ["/", "/events", "/team"],
