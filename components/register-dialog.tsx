@@ -1,3 +1,5 @@
+"use server";
+import { register } from "@/app/actions";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -10,21 +12,36 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
+import { getRegisteredEvents } from "@/lib/schema";
 import { auth, SignInButton } from "@clerk/nextjs";
+import RegisterButton from "./client-reg";
 
 interface Props {
   eventName: string;
+  eventId: number;
 }
 
-export function RegisterDialog({ eventName }: Props) {
+export async function RegisterDialog({ eventName, eventId }: Props) {
   const { userId } = auth();
+  let alreadyRegistered = false;
+  if (userId) {
+    const res = await getRegisteredEvents(userId);
+    const found = res.find((e) => e.eventId === eventId);
+    if (found) alreadyRegistered = true;
+  }
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
         {!!userId ? (
-          <Button variant={"link"} className="p-0 text-[#FF4747]">
-            Register
-          </Button>
+          alreadyRegistered ? (
+            <Button variant={"link"} disabled className="p-0 text-[#6fff47]">
+              Registered
+            </Button>
+          ) : (
+            <Button variant={"link"} className="p-0 text-[#FF4747]">
+              Register
+            </Button>
+          )
         ) : (
           <SignInButton mode="modal">
             <Button variant={"link"} className="p-0 text-[#FF4747]">
@@ -45,7 +62,17 @@ export function RegisterDialog({ eventName }: Props) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Continue</AlertDialogAction>
+          {/* <form action={register}>
+            <input
+              defaultValue={eventId}
+              readOnly
+              type="text"
+              name="eventId"
+              hidden
+            />
+            <AlertDialogAction type="submit">Continue</AlertDialogAction>
+          </form> */}
+          <RegisterButton action={register} eventId={eventId} />
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

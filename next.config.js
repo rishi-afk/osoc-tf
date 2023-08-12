@@ -1,6 +1,8 @@
+import "./src/env.mjs";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   optimizeFonts: false,
+  experimental: { serverActions: true },
   images: {
     remotePatterns: [
       {

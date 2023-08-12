@@ -46,7 +46,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="relative flex min-h-screen flex-col before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/background-pattern.svg')] before:bg-cover before:bg-no-repeat dark:before:opacity-10 before:opacity-20 before:grayscale">
+            <div className="relative flex min-h-screen flex-col before:pointer-events-none before:absolute before:inset-0 before:block before:h-full before:w-full before:bg-[url('/background-pattern.svg')] before:bg-cover before:bg-no-repeat dark:before:opacity-10 before:opacity-20">
               <SiteHeader />
               <div className="flex-1">{children}</div>
               {/* <div className="w-full text-center py-8 z-10">

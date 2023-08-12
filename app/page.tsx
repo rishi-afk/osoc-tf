@@ -1,10 +1,9 @@
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
-import { RegisterForm } from "@/components/register-form";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { fontMono, fontSans2 } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { auth, SignInButton, SignUpButton } from "@clerk/nextjs";
+import { SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 export default function Home() {
