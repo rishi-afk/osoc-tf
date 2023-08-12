@@ -52,6 +52,20 @@ export const getRegisteredEvents = async (userId: string) => {
     .all();
 };
 
+export const getRegistrations = async () => {
+  return await db
+    .select({
+      date: registrations.date,
+      id: registrations.id,
+      email: registrations.userEmail,
+      name: registrations.name,
+      event: events.title,
+    })
+    .from(registrations)
+    .innerJoin(events, eq(events.id, registrations.eventId))
+    .all();
+};
+
 export const getEvents = async () => {
   return await db.select().from(events).all();
 };
