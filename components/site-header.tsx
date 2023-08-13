@@ -11,7 +11,7 @@ export function SiteHeader() {
   return (
     <header className="top-0 z-40 w-full">
       <div className="container flex h-32 md:h-20 gap-4 md:gap-0 items-center md:justify-between justify-center flex-col md:flex-row">
-        <div className="md:w-44">
+        <div className="pt-8 md:w-44 md:pt-0">
           <Link href="/">
             <Image src={"/osoc.png"} alt="OSOC Logo" width={48} height={48} />
           </Link>
