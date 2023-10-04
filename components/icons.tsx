@@ -1,4 +1,5 @@
 import {
+  ArrowUpDown,
   CircleDollarSign,
   Cross,
   Disc3,
@@ -22,4 +23,5 @@ export const Icons = {
   spinner: Disc3,
   linkedIn: Linkedin,
   money: CircleDollarSign,
+  navigation: ArrowUpDown,
 };

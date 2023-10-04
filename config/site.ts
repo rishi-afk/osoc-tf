@@ -13,8 +13,8 @@ export const siteConfig = {
       href: "/team",
     },
     {
-      title: "Aagamya",
-      href: "/",
+      title: "Agamya",
+      href: "/agamya",
     },
   ],
 };
