@@ -33,6 +33,7 @@ import {
 } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { useEffect, useState } from "react";
+import { ScrollArea } from "./ui/scroll-area";
 
 const FormSchema = z
   .object({
@@ -127,135 +128,122 @@ export function RegisterForm() {
           Register
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[360px] sm:max-w-[425px]">
+      <DialogContent className="max-w-[360px] sm:max-w-[425px] md:max-w-xl overflow-y-scroll max-h-screen">
         <DialogHeader>
           <DialogTitle>Register</DialogTitle>
           <DialogDescription>
-            Please enter your details and click register.
+            Please enter your details and click register
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
-            <FormField
-              control={form.control}
-              name="theme"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Theme</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Choose your theme..." />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="1">Theme 1</SelectItem>
-                      <SelectItem value="2">Theme 2</SelectItem>
-                      <SelectItem value="3">Theme 3</SelectItem>
-                      <SelectItem value="4">Theme 4</SelectItem>
-                      <SelectItem value="5">Theme 5</SelectItem>
-                      <SelectItem value="6">Theme 6</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="title"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Title</FormLabel>
-                  <FormControl>
-                    <Input {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="brief"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Brief</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Tell us a little bit about project idea"
-                      className="resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Please provide a max 200 words brief description of your
-                    project idea.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="team_size"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Team Size</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Choose your team size..." />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value="1">1</SelectItem>
-                      <SelectItem value="2">2</SelectItem>
-                      <SelectItem value="3">3</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="team_name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Team Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Dynamic Blasters" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="member_1"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Team Member #1</FormLabel>
-                  <FormControl>
-                    <Input placeholder="205122XXX" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            {parseInt(teamSize) > 1 && (
+        <ScrollArea>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
               <FormField
                 control={form.control}
-                name="member_2"
+                name="theme"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Team Member #2</FormLabel>
+                    <FormLabel>Theme</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choose your theme..." />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="1">Theme 1</SelectItem>
+                        <SelectItem value="2">Theme 2</SelectItem>
+                        <SelectItem value="3">Theme 3</SelectItem>
+                        <SelectItem value="4">Theme 4</SelectItem>
+                        <SelectItem value="5">Theme 5</SelectItem>
+                        <SelectItem value="6">Theme 6</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="brief"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Brief</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Tell us a little bit about project idea"
+                        className="resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormDescription>
+                      Please provide a max 200 words brief description of your
+                      project idea.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="team_size"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Team Size</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choose your team size..." />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="1">1</SelectItem>
+                        <SelectItem value="2">2</SelectItem>
+                        <SelectItem value="3">3</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="team_name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Team Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Dynamic Blasters" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="member_1"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Team Member #1</FormLabel>
                     <FormControl>
                       <Input placeholder="205122XXX" {...field} />
                     </FormControl>
@@ -263,27 +251,42 @@ export function RegisterForm() {
                   </FormItem>
                 )}
               />
-            )}
-            {parseInt(teamSize) > 2 && (
-              <FormField
-                control={form.control}
-                name="member_3"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Team Member #3</FormLabel>
-                    <FormControl>
-                      <Input placeholder="205122XXX" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            )}
-            <DialogFooter>
-              <Button type="submit">Register</Button>
-            </DialogFooter>
-          </form>
-        </Form>
+              {parseInt(teamSize) > 1 && (
+                <FormField
+                  control={form.control}
+                  name="member_2"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Team Member #2</FormLabel>
+                      <FormControl>
+                        <Input placeholder="205122XXX" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+              {parseInt(teamSize) > 2 && (
+                <FormField
+                  control={form.control}
+                  name="member_3"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Team Member #3</FormLabel>
+                      <FormControl>
+                        <Input placeholder="205122XXX" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              )}
+              <DialogFooter>
+                <Button type="submit">Register</Button>
+              </DialogFooter>
+            </form>
+          </Form>
+        </ScrollArea>
       </DialogContent>
     </Dialog>
   );

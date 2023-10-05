@@ -1,3 +1,4 @@
+"use client";
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
 import { Separator } from "@/components/ui/separator";
 import { fontMono } from "@/lib/fonts";
@@ -79,7 +80,7 @@ export default function Agamya() {
         </section>
         <section className="w-full grid items-center gap-6 pb-8 pt-6 md:py-10">
           <div className="w-full flex flex-col items-start md:flex-row">
-            <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12">
+            <div className="flex flex-col w-full sticky md:top-36 lg:w-1/3 md:pb-16 mt-2 md:mt-12">
               <div className="flex max-w-[980px] flex-col items-start gap-2">
                 <h1
                   className={cn(
@@ -207,6 +208,7 @@ export default function Agamya() {
               all.
             </p>
           </div>
+          <div className="h-screen" />
         </section>
       </div>
       <InfiniteTextScroll />
