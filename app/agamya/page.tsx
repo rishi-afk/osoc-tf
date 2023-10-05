@@ -10,7 +10,7 @@ import { RegisterForm } from "@/components/register-form";
 export default function Agamya() {
   return (
     <>
-      <main className="relative container flex md:flex-row flex-col md:items-center justify-center md:justify-between -mt-20 h-screen w-full min-h-[600px]">
+      <main className="relative container flex md:flex-row flex-col items-center justify-center md:justify-between -mt-20 h-screen w-full min-h-[600px]">
         <div>
           <h3
             className={cn(
@@ -39,12 +39,12 @@ export default function Agamya() {
             </Link>
           </div>
         </div>
-        <div className="w-64 h-64 sm:w-96 sm:h-96 md:w-[520px] md:h-[520px] relative">
+        <div className="w-72 h-72 sm:w-96 sm:h-96 md:w-[520px] md:h-[520px] relative">
           <Image
             src="/hackathon-2.svg"
             alt="hackathon image"
-            objectFit="contain"
-            layout="fill"
+            className="object-contain w-full h-full absolute"
+            fill
           />
         </div>
       </main>
@@ -60,7 +60,7 @@ export default function Agamya() {
               THEMES
             </h1>
             <p className="max-w-[600px] text-lg text-muted-foreground">
-              The ones who made it possible. Meet the OSOC 2023 batch.
+              Build innovative solutions to tackle real-world challenges
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-8 w-full">
@@ -90,13 +90,13 @@ export default function Agamya() {
                   TIMELINE
                 </h1>
                 <p className="max-w-[600px] text-lg text-muted-foreground">
-                  The ones who made it possible. Meet the OSOC 2023 batch.
+                  Explore the journey of AGAMYA through time...
                 </p>
               </div>
             </div>
             <div className="ml-0 md:ml-12 lg:w-2/3 sticky">
               <div className="container mx-auto w-full h-full">
-                <div className="relative wrap overflow-hidden p-10 h-full">
+                <div className="relative wrap overflow-hidden py-10 h-full">
                   <div
                     className="border-2-2 border-[#ff4747] absolute h-full border"
                     style={{
@@ -180,12 +180,12 @@ export default function Agamya() {
                     </div>
                   </div>
                 </div>
-                <div className="mx-auto -mt-20 md:-mt-20 h-64 w-64 sm:h-80 sm:w-80  md:h-96 md:w-96 relative">
+                <div className="mx-auto -mt-20 md:-mt-20 h-72 w-72 sm:h-80 sm:w-80 md:h-96 md:w-96 relative">
                   <Image
                     src={"/prize.svg"}
-                    alt=""
-                    layout="fill"
-                    objectFit="contain"
+                    alt="Success Hackathon Image"
+                    className="object-contain w-full h-full absolute"
+                    fill
                   />
                 </div>
               </div>
@@ -203,7 +203,8 @@ export default function Agamya() {
               RULES
             </h1>
             <p className="max-w-[600px] text-lg text-muted-foreground">
-              The ones who made it possible. Meet the OSOC 2023 batch.
+              Play by the rules to ensure a fair and enjoyable experience for
+              all.
             </p>
           </div>
         </section>
