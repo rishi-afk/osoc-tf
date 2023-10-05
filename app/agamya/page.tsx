@@ -1,9 +1,7 @@
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { fontMono } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
-import { SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 import Image from "next/image";
 import { Icons } from "@/components/icons";
@@ -41,7 +39,7 @@ export default function Agamya() {
             </Link>
           </div>
         </div>
-        <div className="w-96 h-96 md:w-[520px] md:h-[520px] relative">
+        <div className="w-64 h-64 sm:w-96 sm:h-96 md:w-[520px] md:h-[520px] relative">
           <Image
             src="/hackathon-2.svg"
             alt="hackathon image"
@@ -124,7 +122,7 @@ export default function Agamya() {
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
                         Registration
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         Pick your favourite event(s) and register in that event
                         by filling the form corresponding to that event. Its
                         that easy :)
@@ -140,7 +138,7 @@ export default function Agamya() {
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
                         Participation
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         Participate online. The links for your registered events
                         will be sent to you via email and whatsapp groups. Use
                         those links and show your talent.
@@ -157,7 +155,7 @@ export default function Agamya() {
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
                         Result Declaration
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         The ultimate genius will be revealed by our judging
                         panel on 10th May, 2021 and the resukts will be
                         announced on the whatsapp groups and will be mailed to
@@ -174,7 +172,7 @@ export default function Agamya() {
                       <h4 className="mb-3 font-bold  text-lg md:text-2xl text-left">
                         Prize Distribution
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-gray-50 text-opacity-100">
+                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         The winners will be contacted by our team for their
                         addresses and the winning goodies will be sent at their
                         addresses.
@@ -182,7 +180,7 @@ export default function Agamya() {
                     </div>
                   </div>
                 </div>
-                <div className="mx-auto -mt-20 md:-mt-20 h-96 w-96 relative">
+                <div className="mx-auto -mt-20 md:-mt-20 h-64 w-64 sm:h-80 sm:w-80  md:h-96 md:w-96 relative">
                   <Image
                     src={"/prize.svg"}
                     alt=""
