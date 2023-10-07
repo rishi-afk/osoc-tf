@@ -344,7 +344,7 @@ export function RegisterForm({ email }: Props) {
                 {isPending ? (
                   <Icons.spinner
                     className="animate-spin text-[#ff4747]"
-                    size={48}
+                    size={16}
                   />
                 ) : (
                   "Register"
