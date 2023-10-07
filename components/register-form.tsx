@@ -40,6 +40,7 @@ import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { catchError } from "@/lib/utils";
 import { checkIsLoggedIn } from "@/app/actions";
 import Link from "next/link";
+import { Icons } from "./icons";
 const FormSchema = z
   .object({
     theme: z.string({ required_error: "Please select a theme." }),
@@ -126,6 +127,8 @@ export function RegisterForm({ email }: Props) {
   const { useUploadThing } = generateReactHelpers<OurFileRouter>();
   const { isUploading, startUpload } = useUploadThing("abstract");
 
+  const [open, setOpen] = useState<boolean>(false);
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
     startTransition(async () => {
       try {
@@ -139,9 +142,6 @@ export function RegisterForm({ email }: Props) {
           }));
           return formattedAbstract ?? null;
         });
-
-        console.log(abstract);
-
         toast({
           title: "You submitted the following values:",
           description: (
@@ -152,9 +152,9 @@ export function RegisterForm({ email }: Props) {
             </pre>
           ),
         });
-
         form.reset();
         setFiles(null);
+        setOpen(false);
       } catch (err) {
         catchError(err);
       }
@@ -162,7 +162,7 @@ export function RegisterForm({ email }: Props) {
   }
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           className="dark:text-[#D2D2D2] text-muted-foreground text-lg sm:text-xl md:text-2xl p-0"
@@ -340,7 +340,16 @@ export function RegisterForm({ email }: Props) {
               />
             )}
             <DialogFooter>
-              <Button type="submit">Register</Button>
+              <Button disabled={isPending} type="submit">
+                {isPending ? (
+                  <Icons.spinner
+                    className="animate-spin text-[#ff4747]"
+                    size={48}
+                  />
+                ) : (
+                  "Register"
+                )}
+              </Button>
             </DialogFooter>
           </form>
         </Form>
