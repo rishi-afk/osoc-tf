@@ -1,4 +1,3 @@
-// "use client";
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
 import { Separator } from "@/components/ui/separator";
 import { fontMono } from "@/lib/fonts";
@@ -7,11 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Icons } from "@/components/icons";
 import { RegisterForm } from "@/components/register-form";
-import { SignInButton, auth } from "@clerk/nextjs";
+import { SignInButton, currentUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 export default async function Agamya() {
-  const { user } = auth();
+  const user = await currentUser();
   return (
     <>
       <main className="relative container flex md:flex-row flex-col items-center justify-center md:justify-between -mt-20 h-screen w-full min-h-[600px]">
@@ -32,7 +31,9 @@ export default async function Agamya() {
             AGAMYA
           </h1>
           <div className="mt-8 md:mt-16 flex flex-row h-8 md:h-12 gap-8 lg:gap-12 items-center md:justify-start justify-center">
-            {!user ? (
+            {!!user ? (
+              <RegisterForm email={user?.emailAddresses[0]?.emailAddress} />
+            ) : (
               <SignInButton mode="modal">
                 <Button
                   className="dark:text-[#D2D2D2] text-muted-foreground text-lg sm:text-xl md:text-2xl p-0"
@@ -41,8 +42,6 @@ export default async function Agamya() {
                   Register
                 </Button>
               </SignInButton>
-            ) : (
-              <RegisterForm email={user?.emailAddresses[0].emailAddress} />
             )}
             <Separator orientation="vertical" className="bg-[#FF4747] h-full" />
             <Link
