@@ -20,6 +20,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  UncontrolledFormMessage,
 } from "@/components/ui/form";
 
 import { toast } from "@/components/ui/use-toast";
@@ -31,10 +32,14 @@ import {
   SelectContent,
   SelectItem,
 } from "./ui/select";
-import { Textarea } from "./ui/textarea";
-import { useEffect, useState } from "react";
-import { ScrollArea } from "./ui/scroll-area";
-
+import { useEffect, useState, useTransition } from "react";
+import { FileDialog } from "./file-dialog";
+import { FileWithPath } from "react-dropzone";
+import { generateReactHelpers } from "@uploadthing/react/hooks";
+import { OurFileRouter } from "@/app/api/uploadthing/core";
+import { catchError } from "@/lib/utils";
+import { checkIsLoggedIn } from "@/app/actions";
+import Link from "next/link";
 const FormSchema = z
   .object({
     theme: z.string({ required_error: "Please select a theme." }),
@@ -43,25 +48,29 @@ const FormSchema = z
     member_1: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])$/,
-        "Invalid webmail id :("
+        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        "Invalid roll number."
       ),
     member_2: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])$/,
-        "Invalid webmail id :("
+        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        "Invalid roll number."
       )
       .optional(),
     member_3: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])$/,
-        "Invalid webmail id :("
+        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        "Invalid roll number."
       )
       .optional(),
-    title: z.string().min(2, "Your name looks invalid :("),
-    brief: z.string().min(100, "Please enter a brief description of yourself."),
+    title: z.string().min(2, "Your title looks invalid."),
+    abstract: z.unknown().refine((val) => {
+      if (!Array.isArray(val)) return false;
+      if (val.some((file) => !(file instanceof File))) return false;
+      return true;
+    }, "Must upload project abstract"),
   })
   .superRefine((val, ctx) => {
     if (parseInt(val.team_size) > 1 && !val.team_name) {
@@ -94,10 +103,14 @@ const FormSchema = z
     }
   });
 
-export function RegisterForm() {
+interface Props {
+  userId: string;
+}
+
+export function RegisterForm({ userId }: Props) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: { team_size: "1" },
+    defaultValues: { team_size: "1", member_1: userId },
   });
 
   const [teamSize, setTeamSize] = useState<string>("1");
@@ -107,14 +120,44 @@ export function RegisterForm() {
     setTeamSize(teamSizeValue);
   }, [teamSizeValue]);
 
+  const [files, setFiles] = useState<FileWithPath[] | null>(null);
+
+  const [isPending, startTransition] = useTransition();
+  const { useUploadThing } = generateReactHelpers<OurFileRouter>();
+  const { isUploading, startUpload } = useUploadThing("abstract");
+
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+    startTransition(async () => {
+      try {
+        await checkIsLoggedIn();
+        const f = data.abstract as File[];
+        const abstract = await startUpload(f).then((res) => {
+          const formattedAbstract = res?.map((image) => ({
+            id: image.key,
+            name: image.key.split("_")[1] ?? image.key,
+            url: image.url,
+          }));
+          return formattedAbstract ?? null;
+        });
+
+        console.log(abstract);
+
+        toast({
+          title: "You submitted the following values:",
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                {JSON.stringify(data, null, 2)}
+              </code>
+            </pre>
+          ),
+        });
+
+        form.reset();
+        setFiles(null);
+      } catch (err) {
+        catchError(err);
+      }
     });
   }
 
@@ -132,7 +175,7 @@ export function RegisterForm() {
         <DialogHeader>
           <DialogTitle>Register</DialogTitle>
           <DialogDescription>
-            Please enter your details and click register
+            Please note that only one member of the team needs to register.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -178,27 +221,43 @@ export function RegisterForm() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="brief"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Brief</FormLabel>
-                  <FormControl>
-                    <Textarea
-                      placeholder="Tell us a little bit about project idea"
-                      className="resize-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormDescription>
-                    Please provide a max 200 words brief description of your
-                    project idea.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <FormItem className="flex w-full flex-col gap-1.5">
+              <FormLabel>Abstract</FormLabel>
+              {files?.length ? (
+                <div className="flex items-center gap-2">
+                  {files.map((file, i) => (
+                    <span key={i}>{file.name}</span>
+                  ))}
+                </div>
+              ) : null}
+              <FormControl>
+                <FileDialog
+                  setValue={form.setValue}
+                  accept={{ "application/pdf": [] }}
+                  name="abstract"
+                  maxFiles={1}
+                  maxSize={1024 * 1024 * 2}
+                  files={files}
+                  setFiles={setFiles}
+                  isUploading={isUploading}
+                  disabled={isPending}
+                />
+              </FormControl>
+              <FormDescription>
+                Provide your project abstract following this{" "}
+                <Link
+                  className="underline text-[#ff4747]"
+                  href={"https://www.google.com"}
+                  prefetch={false}
+                >
+                  template
+                </Link>
+                .
+              </FormDescription>
+              <UncontrolledFormMessage
+                message={form.formState.errors.abstract?.message}
+              />
+            </FormItem>
             <FormField
               control={form.control}
               name="team_size"
@@ -244,7 +303,7 @@ export function RegisterForm() {
                 <FormItem>
                   <FormLabel>Team Member #1</FormLabel>
                   <FormControl>
-                    <Input placeholder="205122XXX" {...field} />
+                    <Input readOnly {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

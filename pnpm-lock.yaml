@@ -22,6 +22,7 @@ specifiers:
   '@types/node': 20.4.5
   '@types/react': 18.2.17
   '@types/react-dom': 18.2.7
+  '@uploadthing/react': ^5.6.2
   autoprefixer: 10.4.14
   class-variance-authority: ^0.7.0
   clsx: ^2.0.0
@@ -39,13 +40,15 @@ specifiers:
   postcss: 8.4.27
   react: 18.2.0
   react-dom: 18.2.0
+  react-dropzone: ^14.2.3
   react-hook-form: ^7.45.4
   react-intersection-observer: ^9.5.2
   tailwind-merge: ^1.14.0
   tailwindcss: 3.3.3
   tailwindcss-animate: ^1.0.6
   typescript: 5.1.6
-  zod: ^3.21.4
+  uploadthing: ^5.7.1
+  zod: ^3.22.4
 
 dependencies:
   '@clerk/nextjs': 4.25.1_54ux7fu2vrztxgcjbkegvwjefy
@@ -64,11 +67,12 @@ dependencies:
   '@radix-ui/react-slot': 1.0.2_e74vmjybjy5dsfplslbsgtbvvi
   '@radix-ui/react-toast': 1.1.4_daadhm4ohxobgnrt365as5bhny
   '@radix-ui/react-tooltip': 1.0.6_daadhm4ohxobgnrt365as5bhny
-  '@t3-oss/env-nextjs': 0.6.0_zno6rcmvi3mruj4xg7lanqhjom
+  '@t3-oss/env-nextjs': 0.6.0_7wnn2gv4irlyq5evyzyv5uup74
   '@tanstack/react-table': 8.9.3_biqbaboplfbrettd7655fr4n2y
   '@types/node': 20.4.5
   '@types/react': 18.2.17
   '@types/react-dom': 18.2.7
+  '@uploadthing/react': 5.6.2_4uzpbohqzr2vt725gsugtdspqe
   autoprefixer: 10.4.14_postcss@8.4.27
   class-variance-authority: 0.7.0
   clsx: 2.0.0
@@ -85,13 +89,15 @@ dependencies:
   postcss: 8.4.27
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-dropzone: 14.2.3_react@18.2.0
   react-hook-form: 7.45.4_react@18.2.0
   react-intersection-observer: 9.5.2_react@18.2.0
   tailwind-merge: 1.14.0
   tailwindcss: 3.3.3
   tailwindcss-animate: 1.0.6_tailwindcss@3.3.3
   typescript: 5.1.6
-  zod: 3.21.4
+  uploadthing: 5.7.1_zod@3.22.4
+  zod: 3.22.4
 
 devDependencies:
   drizzle-kit: 0.19.12
@@ -1877,25 +1883,25 @@ packages:
       tslib: 2.6.1
     dev: false
 
-  /@t3-oss/env-core/0.6.0_zno6rcmvi3mruj4xg7lanqhjom:
+  /@t3-oss/env-core/0.6.0_7wnn2gv4irlyq5evyzyv5uup74:
     resolution: {integrity: sha512-3FkPAba069WRZVVab/sB1m3eSGn/rZeypx5k+sWEu1d+k0OQdRDnvFS+7MtxYgqVrwaRk3b7yVnX2dgSPVmWPQ==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
     dependencies:
       typescript: 5.1.6
-      zod: 3.21.4
+      zod: 3.22.4
     dev: false
 
-  /@t3-oss/env-nextjs/0.6.0_zno6rcmvi3mruj4xg7lanqhjom:
+  /@t3-oss/env-nextjs/0.6.0_7wnn2gv4irlyq5evyzyv5uup74:
     resolution: {integrity: sha512-SpzcGNIbUYcQw4zPPFeRJqCC1560zL7QmB0puIqOnuCsmykPkqHPX+n9CNZLXVQerboHzfvb7Kd+jAdouk72Vw==}
     peerDependencies:
       typescript: '>=4.7.2'
       zod: ^3.0.0
     dependencies:
-      '@t3-oss/env-core': 0.6.0_zno6rcmvi3mruj4xg7lanqhjom
+      '@t3-oss/env-core': 0.6.0_7wnn2gv4irlyq5evyzyv5uup74
       typescript: 5.1.6
-      zod: 3.21.4
+      zod: 3.22.4
     dev: false
 
   /@tanstack/react-table/8.9.3_biqbaboplfbrettd7655fr4n2y:
@@ -2110,6 +2116,57 @@ packages:
       eslint-visitor-keys: 3.4.2
     dev: false
 
+  /@uploadthing/mime-types/0.2.1:
+    resolution: {integrity: sha512-UDySsPbdi7wp52WG7mp5CiZwaTvokDubqhm1xhFm73Bqhp0PsGbwSSF5PdCXH4fe8Y4EKGrMyWQ4i1fF9+DVVQ==}
+    dev: false
+
+  /@uploadthing/react/5.6.2_4uzpbohqzr2vt725gsugtdspqe:
+    resolution: {integrity: sha512-zW++ZJiIthEjcn0ZD5cYfQ+NR8Ez4P47gm7VNsAOeMmFz66JzdllHJ4AXQ9bnWl31M8L7mqxUrNlEc3jSd7CMg==}
+    peerDependencies:
+      next: '*'
+      react: ^17.0.2 || ^18.0.0
+      uploadthing: ^5.0.0
+    peerDependenciesMeta:
+      next:
+        optional: true
+    dependencies:
+      '@uploadthing/shared': 5.2.4_zod@3.22.4
+      attr-accept: 2.2.2
+      file-selector: 0.6.0
+      next: 13.4.12_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      tailwind-merge: 1.14.0
+      uploadthing: 5.7.1_zod@3.22.4
+    transitivePeerDependencies:
+      - '@uploadthing/mime-types'
+      - zod
+    dev: false
+
+  /@uploadthing/shared/5.2.4_3m7titkmphg2qnptjtv5nfrvzy:
+    resolution: {integrity: sha512-eWDqys/+jDhilvwAP5Ss5ph6Gw1opwZHfuHAXX1dDDsDNrBSOcZH8cKLFTBOaQ7896HWerpendMbRAA0EWaMeg==}
+    peerDependencies:
+      '@uploadthing/mime-types': ^0.2.0
+      zod: ^3.22.3
+    peerDependenciesMeta:
+      '@uploadthing/mime-types':
+        optional: true
+    dependencies:
+      '@uploadthing/mime-types': 0.2.1
+      zod: 3.22.4
+    dev: false
+
+  /@uploadthing/shared/5.2.4_zod@3.22.4:
+    resolution: {integrity: sha512-eWDqys/+jDhilvwAP5Ss5ph6Gw1opwZHfuHAXX1dDDsDNrBSOcZH8cKLFTBOaQ7896HWerpendMbRAA0EWaMeg==}
+    peerDependencies:
+      '@uploadthing/mime-types': ^0.2.0
+      zod: ^3.22.3
+    peerDependenciesMeta:
+      '@uploadthing/mime-types':
+        optional: true
+    dependencies:
+      zod: 3.22.4
+    dev: false
+
   /acorn-jsx/5.3.2_acorn@8.10.0:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
@@ -2269,6 +2326,11 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
+    dev: false
+
+  /attr-accept/2.2.2:
+    resolution: {integrity: sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==}
+    engines: {node: '>=4'}
     dev: false
 
   /autoprefixer/10.4.14_postcss@8.4.27:
@@ -2712,7 +2774,7 @@ packages:
       hanji: 0.0.5
       json-diff: 0.9.0
       minimatch: 7.4.6
-      zod: 3.21.4
+      zod: 3.22.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3314,6 +3376,13 @@ packages:
     engines: {node: ^10.12.0 || >=12.0.0}
     dependencies:
       flat-cache: 3.0.4
+    dev: false
+
+  /file-selector/0.6.0:
+    resolution: {integrity: sha512-QlZ5yJC0VxHxQQsQhXvBaC7VRJ2uaxTf+Tfpu4Z/OcVQJVpZO+DGU0rkoVW5ce2SccxugvpBJoMvUs59iILYdw==}
+    engines: {node: '>= 12'}
+    dependencies:
+      tslib: 2.6.2
     dev: false
 
   /file-uri-to-path/1.0.0:
@@ -4451,6 +4520,18 @@ packages:
       scheduler: 0.23.0
     dev: false
 
+  /react-dropzone/14.2.3_react@18.2.0:
+    resolution: {integrity: sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==}
+    engines: {node: '>= 10.13'}
+    peerDependencies:
+      react: '>= 16.8 || 18.0.0'
+    dependencies:
+      attr-accept: 2.2.2
+      file-selector: 0.6.0
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
+
   /react-hook-form/7.45.4_react@18.2.0:
     resolution: {integrity: sha512-HGDV1JOOBPZj10LB3+OZgfDBTn+IeEsNOKiq/cxbQAIbKaiJUe/KV8DBUzsx0Gx/7IG/orWqRRm736JwOfUSWQ==}
     engines: {node: '>=12.22.0'}
@@ -5128,6 +5209,16 @@ packages:
       picocolors: 1.0.0
     dev: false
 
+  /uploadthing/5.7.1_zod@3.22.4:
+    resolution: {integrity: sha512-oPrW3avxIEJd1rVBuOnQ6sV3sDmKPSqMnk02aXZSPrVxZPbYzJDOWkbL3iqT9qYMliaP44nGCt3UK7we4d2HCg==}
+    engines: {node: '>=18.13.0'}
+    dependencies:
+      '@uploadthing/mime-types': 0.2.1
+      '@uploadthing/shared': 5.2.4_3m7titkmphg2qnptjtv5nfrvzy
+    transitivePeerDependencies:
+      - zod
+    dev: false
+
   /uri-js/4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
@@ -5271,3 +5362,7 @@ packages:
 
   /zod/3.21.4:
     resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false
+
+  /zod/3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}

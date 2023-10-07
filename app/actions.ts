@@ -1,6 +1,6 @@
 "use server";
 import { registerUserForEvent } from "@/lib/schema";
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 export async function register(eventId: number) {
@@ -31,4 +31,9 @@ export async function register(eventId: number) {
   }
   revalidatePath("/events");
   return { status: 200, message: "Registration Successful" };
+}
+
+export async function checkIsLoggedIn() {
+  const { userId } = auth();
+  if (!userId) throw new Error("Unauthorized");
 }

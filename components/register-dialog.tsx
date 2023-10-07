@@ -2,7 +2,6 @@
 import { register } from "@/app/actions";
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -62,16 +61,6 @@ export async function RegisterDialog({ eventName, eventId }: Props) {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          {/* <form action={register}>
-            <input
-              defaultValue={eventId}
-              readOnly
-              type="text"
-              name="eventId"
-              hidden
-            />
-            <AlertDialogAction type="submit">Continue</AlertDialogAction>
-          </form> */}
           <RegisterButton action={register} eventId={eventId} />
         </AlertDialogFooter>
       </AlertDialogContent>
