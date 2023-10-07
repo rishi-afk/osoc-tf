@@ -11,7 +11,7 @@ import { SignInButton, auth } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 export default async function Agamya() {
-  const { userId } = auth();
+  const { user } = auth();
   return (
     <>
       <main className="relative container flex md:flex-row flex-col items-center justify-center md:justify-between -mt-20 h-screen w-full min-h-[600px]">
@@ -32,7 +32,7 @@ export default async function Agamya() {
             AGAMYA
           </h1>
           <div className="mt-8 md:mt-16 flex flex-row h-8 md:h-12 gap-8 lg:gap-12 items-center md:justify-start justify-center">
-            {!userId ? (
+            {!user ? (
               <SignInButton mode="modal">
                 <Button
                   className="dark:text-[#D2D2D2] text-muted-foreground text-lg sm:text-xl md:text-2xl p-0"
@@ -42,7 +42,7 @@ export default async function Agamya() {
                 </Button>
               </SignInButton>
             ) : (
-              <RegisterForm userId={userId} />
+              <RegisterForm email={user?.emailAddresses[0].emailAddress} />
             )}
             <Separator orientation="vertical" className="bg-[#FF4747] h-full" />
             <Link

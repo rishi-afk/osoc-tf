@@ -104,13 +104,13 @@ const FormSchema = z
   });
 
 interface Props {
-  userId: string;
+  email: string;
 }
 
-export function RegisterForm({ userId }: Props) {
+export function RegisterForm({ email }: Props) {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: { team_size: "1", member_1: userId },
+    defaultValues: { team_size: "1", member_1: email },
   });
 
   const [teamSize, setTeamSize] = useState<string>("1");
@@ -317,7 +317,7 @@ export function RegisterForm({ userId }: Props) {
                   <FormItem>
                     <FormLabel>Team Member #2</FormLabel>
                     <FormControl>
-                      <Input placeholder="205122XXX" {...field} />
+                      <Input placeholder="205122XXX@nitt.edu" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -332,7 +332,7 @@ export function RegisterForm({ userId }: Props) {
                   <FormItem>
                     <FormLabel>Team Member #3</FormLabel>
                     <FormControl>
-                      <Input placeholder="205122XXX" {...field} />
+                      <Input placeholder="205122XXX@nitt.edu" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
