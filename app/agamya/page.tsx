@@ -40,7 +40,6 @@ export default async function Agamya() {
                 >
                   Register
                 </Button>
-                im
               </SignInButton>
             ) : (
               <RegisterForm userId={userId} />
