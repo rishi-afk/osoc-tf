@@ -50,14 +50,6 @@ export default async function Agamya() {
                 <Button
                   className="text-green-500 text-lg sm:text-xl md:text-2xl p-0"
                   variant="link"
-                  onClick={() =>
-                    toast({
-                      title: "Error",
-                      description:
-                        "Looks like you are already registered for Agamya. If this is not the case, please contact OSOC Team.",
-                      variant: "destructive",
-                    })
-                  }
                 >
                   Registered
                 </Button>
