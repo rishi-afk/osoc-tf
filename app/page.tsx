@@ -5,8 +5,10 @@ import { fontMono, fontSans2 } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import { SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default function Home() {
+  redirect("/agamya");
   return (
     <>
       <main className="relative container flex flex-col justify-center -mt-32 md:-mt-20 h-screen w-full min-h-[600px]">
