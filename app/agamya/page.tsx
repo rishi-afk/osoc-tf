@@ -23,6 +23,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  openGraph: {
+    title: "Agamya: The Hackathon",
+    description:
+      "Agamya: The Hackathon is an exciting and innovative flagship event organized by OSOC (Open Source Open Community) as part of the Technofania tech fest. This hackathon is designed to bring together tech enthusiasts, developers, designers, and problem solvers of the MCA batch 2025.",
+  },
 };
 
 export default async function Agamya() {
