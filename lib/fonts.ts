@@ -4,6 +4,19 @@ import {
   DM_Sans as FontSans2,
 } from "next/font/google";
 
+import localFont from "next/font/local";
+
+export const samarkan = localFont({
+  src: [
+    {
+      path: "../public/font.ttf",
+      weight: "400",
+    },
+  ],
+  variable: "--font-samarkan",
+  display: "swap",
+});
+
 export const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-manrope",

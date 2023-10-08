@@ -44,6 +44,7 @@ export const agamya = sqliteTable("agamya", {
   member_1: text("member_1").notNull(),
   member_2: text("member_2"),
   member_3: text("member_3"),
+  member_4: text("member_4"),
   abstract: text("abstract").notNull(),
 });
 
@@ -91,7 +92,8 @@ export const checkIfAlreadyRegisteredForAgamya = async (email: string) => {
       or(
         eq(agamya.member_1, email),
         eq(agamya.member_2, email),
-        eq(agamya.member_3, email)
+        eq(agamya.member_3, email),
+        eq(agamya.member_4, email)
       )
     )
     .all();

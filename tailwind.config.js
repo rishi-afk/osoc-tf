@@ -71,6 +71,7 @@ module.exports = {
         sans: ["var(--font-manrope)"],
         sanx: ["var(--font-dm)"],
         mono: ["var(--font-syne)"],
+        samarkan: ["var(--font-samarkan)"],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

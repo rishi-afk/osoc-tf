@@ -41,6 +41,7 @@ import { catchError } from "@/lib/utils";
 import { checkIsLoggedIn, registerForAgamya } from "@/app/actions";
 import Link from "next/link";
 import { Icons } from "./icons";
+import { revalidatePath } from "next/cache";
 const FormSchema = z
   .object({
     theme: z.string({ required_error: "Please select a theme." }),
@@ -60,6 +61,13 @@ const FormSchema = z
       )
       .optional(),
     member_3: z
+      .string()
+      .regex(
+        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        "Invalid roll number."
+      )
+      .optional(),
+    member_4: z
       .string()
       .regex(
         /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
@@ -100,6 +108,13 @@ const FormSchema = z
         code: z.ZodIssueCode.custom,
         message: "Please enter team member #3",
         path: ["member_3"],
+      });
+    }
+    if (parseInt(val.team_size) === 4 && !val.member_4) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Please enter team member #4",
+        path: ["member_4"],
       });
     }
   });
@@ -153,6 +168,7 @@ export function RegisterForm({ email }: Props) {
           description: "Your application for Agamya has been submitted.",
         });
         form.reset();
+        revalidatePath("/agamya");
         setFiles(null);
         setOpen(false);
       } catch (err) {
@@ -247,8 +263,9 @@ export function RegisterForm({ email }: Props) {
                 Provide your project abstract following this{" "}
                 <Link
                   className="underline text-[#ff4747]"
-                  href={"https://www.google.com"}
+                  href={"/abstract-format.pdf"}
                   prefetch={false}
+                  target="_blank"
                 >
                   template
                 </Link>
@@ -277,6 +294,7 @@ export function RegisterForm({ email }: Props) {
                       <SelectItem value="1">1</SelectItem>
                       <SelectItem value="2">2</SelectItem>
                       <SelectItem value="3">3</SelectItem>
+                      <SelectItem value="4">4</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -331,6 +349,21 @@ export function RegisterForm({ email }: Props) {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Team Member #3</FormLabel>
+                    <FormControl>
+                      <Input placeholder="205122XXX@nitt.edu" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
+            {parseInt(teamSize) > 3 && (
+              <FormField
+                control={form.control}
+                name="member_4"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Team Member #4</FormLabel>
                     <FormControl>
                       <Input placeholder="205122XXX@nitt.edu" {...field} />
                     </FormControl>

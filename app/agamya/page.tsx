@@ -1,6 +1,6 @@
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
 import { Separator } from "@/components/ui/separator";
-import { fontMono } from "@/lib/fonts";
+import { fontMono, samarkan } from "@/lib/fonts";
 import { catchError, cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,7 +9,20 @@ import { RegisterForm } from "@/components/register-form";
 import { SignInButton, currentUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { checkIfRegisteredForAgamya } from "../actions";
-import { toast } from "@/components/ui/use-toast";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Agamya: The Hackathon",
+  description:
+    "Agamya: The Hackathon is an exciting and innovative flagship event organized by OSOC (Open Source Open Community) as part of the Technofania tech fest.",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default async function Agamya() {
   const user = await currentUser();
@@ -36,8 +49,8 @@ export default async function Agamya() {
           </h3>
           <h1
             className={cn(
-              "text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase leading-none font-bold tracking-tighter text-center md:text-left text-[#FF4747] ",
-              fontMono.className
+              "text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase leading-none font-bold text-center md:text-left text-[#FF4747] ",
+              samarkan.className
             )}
           >
             AGAMYA
@@ -152,10 +165,10 @@ export default async function Agamya() {
                     <div className="order-1 w-5/12"></div>
                     <div className="order-1 w-5/12 px-1 py-4 text-right">
                       <p className="mb-3 text-base text-[#FF4747]">
-                        1-6 May, 2021
+                        11 October, 2023
                       </p>
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
-                        Registration
+                        Abstract Submission
                       </h4>
                       <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         Pick your favourite event(s) and register in that event
@@ -168,10 +181,10 @@ export default async function Agamya() {
                     <div className="order-1 w-5/12"></div>
                     <div className="order-1  w-5/12 px-1 py-4 text-left">
                       <p className="mb-3 text-base text-[#FF4747]">
-                        6-9 May, 2021
+                        17 October, 2023
                       </p>
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
-                        Participation
+                        First Round
                       </h4>
                       <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         Participate online. The links for your registered events
@@ -184,11 +197,10 @@ export default async function Agamya() {
                     <div className="order-1 w-5/12"></div>
                     <div className="order-1 w-5/12 px-1 py-4 text-right">
                       <p className="mb-3 text-base text-[#FF4747]">
-                        {" "}
-                        10 May, 2021
+                        22 October, 2023
                       </p>
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
-                        Result Declaration
+                        Final Round
                       </h4>
                       <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         The ultimate genius will be revealed by our judging
@@ -202,15 +214,14 @@ export default async function Agamya() {
                     <div className="order-1 w-5/12"></div>
                     <div className="order-1 w-5/12 px-1 py-4">
                       <p className="mb-3 text-base text-[#FF4747]">
-                        12 May, 2021
+                        22 October, 2023
                       </p>
                       <h4 className="mb-3 font-bold  text-lg md:text-2xl text-left">
                         Prize Distribution
                       </h4>
                       <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         The winners will be contacted by our team for their
-                        addresses and the winning goodies will be sent at their
-                        addresses.
+                        details and the prizes will be distributed.
                       </p>
                     </div>
                   </div>
@@ -227,7 +238,7 @@ export default async function Agamya() {
             </div>
           </div>
         </section>
-        <section className="w-full grid items-center gap-6 pb-8 pt-6 md:py-10">
+        <section className="w-full grid items-center gap-12 pb-8 pt-6 md:py-10">
           <div className="flex max-w-[980px] flex-col items-start gap-2">
             <h1
               className={cn(
@@ -242,7 +253,85 @@ export default async function Agamya() {
               all.
             </p>
           </div>
-          <div className="h-screen" />
+          <div className="flex gap-4 flex-col">
+            <div className="flex gap-2 flex-col">
+              <h2
+                className={cn(
+                  "font-semibold tracking-tight text-2xl sm:text-3xl md:text-4xl"
+                )}
+              >
+                Overview
+              </h2>
+              <Separator orientation="horizontal" className="bg-[#FF4747]" />
+            </div>
+            <p>
+              Agamya: The Hackathon is an exciting and innovative flagship event
+              organized by OSOC (Open Source Open Community) as part of the
+              Technofania tech fest. This hackathon is designed to bring
+              together tech enthusiasts, developers, designers, and problem
+              solvers of the MCA batch 2025. It is a platform to turn innovative
+              ideas into reality and make a positive impact on society through
+              technology. And the OSOC is happy to announce the Agamya{"'"}
+              beginning for this year and looking forward to welcoming the best
+              of the innovations and in turn, giving back to the society to make
+              the lives of others better.
+            </p>
+          </div>
+          <div className="flex gap-4 flex-col">
+            <div className="flex gap-2 flex-col">
+              <h2
+                className={cn(
+                  "font-semibold tracking-tight text-2xl sm:text-3xl md:text-4xl"
+                )}
+              >
+                Details
+              </h2>
+              <Separator orientation="horizontal" className="bg-[#FF4747]" />
+            </div>
+            <ul className="list-decimal flex gap-2 flex-col">
+              <li>
+                This hackathon expects the participants either in a team (max of
+                4) or as an individual.
+              </li>
+              <li>
+                We’ll be providing a list of themes below and you have to choose
+                the one from listed themes only.
+              </li>
+              <li>
+                Make sure to register yourself and the team on the Technofania
+                website. Please make sure that only one member of the team needs
+                to register on the website.
+              </li>
+              <li>
+                While registering, choose the theme that you’ll work towards.
+              </li>
+              <li>
+                After registration and selecting the theme of your choice you
+                need to first start working on the abstract. The format of the
+                abstract is attached in the form on the website.
+              </li>
+              <li>
+                You strictly need to stick to the theme of your choice when
+                giving the title to your project. That is, your project should
+                not differ from the theme you have chosen while registering.
+              </li>
+              <li>
+                After the abstract submission, each participant has to submit
+                the first round of the progress to their project. The deadline
+                for the same is 17th october.
+              </li>
+              <li>
+                Then a few projects, based on the quality of the abstract and
+                the work progress will be selected for the final submission and
+                the presentation. (The platforms for abstract and first round of
+                submission will be communicated to participants on time)
+              </li>
+              <li>
+                The final round will be in the offline mode where you need to
+                present your project in front of the jury.
+              </li>
+            </ul>
+          </div>
         </section>
       </div>
       <InfiniteTextScroll />
