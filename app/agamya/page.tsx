@@ -73,7 +73,11 @@ export default async function Agamya() {
                 </Button>
               )
             ) : (
-              <SignInButton mode="modal">
+              <SignInButton
+                mode="modal"
+                afterSignUpUrl="/agamya"
+                afterSignInUrl="/agamya"
+              >
                 <Button
                   className="dark:text-[#D2D2D2] text-muted-foreground text-lg sm:text-xl md:text-2xl p-0"
                   variant="link"
@@ -272,9 +276,10 @@ export default async function Agamya() {
               organized by OSOC (Open Source Open Community) as part of the
               Technofania tech fest. This hackathon is designed to bring
               together tech enthusiasts, developers, designers, and problem
-              solvers of the MCA batch 2025. It is a platform to turn innovative
-              ideas into reality and make a positive impact on society through
-              technology. And the OSOC is happy to announce the Agamya{"'"}
+              solvers of the MCA community of NITT. It is a platform to turn
+              innovative ideas into reality and make a positive impact on
+              society through technology. And the OSOC is happy to announce the
+              Agamya{"'"}
               beginning for this year and looking forward to welcoming the best
               of the innovations and in turn, giving back to the society to make
               the lives of others better.
@@ -297,8 +302,7 @@ export default async function Agamya() {
                 4) or as an individual.
               </li>
               <li>
-                We’ll be providing a list of themes below and you have to choose
-                the one from listed themes only.
+                You only have to choose theme from the list of themes provided.
               </li>
               <li>
                 Make sure to register yourself and the team on the Technofania
