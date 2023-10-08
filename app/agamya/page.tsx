@@ -4,7 +4,6 @@ import { fontMono, samarkan } from "@/lib/fonts";
 import { catchError, cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
-import { Icons } from "@/components/icons";
 import { RegisterForm } from "@/components/register-form";
 import { SignInButton, currentUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
@@ -174,11 +173,11 @@ export default async function Agamya() {
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
                         Abstract Submission
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
+                      {/* <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         Pick your favourite event(s) and register in that event
                         by filling the form corresponding to that event. Its
                         that easy :)
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-8 flex justify-between items-center w-full right-timeline">
@@ -190,11 +189,11 @@ export default async function Agamya() {
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
                         First Round
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
+                      {/* <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         Participate online. The links for your registered events
                         will be sent to you via email and whatsapp groups. Use
                         those links and show your talent.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
@@ -206,12 +205,12 @@ export default async function Agamya() {
                       <h4 className="mb-3 font-bold text-lg md:text-2xl">
                         Final Round
                       </h4>
-                      <p className="text-sm md:text-base leading-snug text-muted-foreground">
+                      {/* <p className="text-sm md:text-base leading-snug text-muted-foreground">
                         The ultimate genius will be revealed by our judging
                         panel on 10th May, 2021 and the resukts will be
                         announced on the whatsapp groups and will be mailed to
                         you.
-                      </p>
+                      </p> */}
                     </div>
                   </div>
                   <div className="mb-8 flex justify-between items-center w-full right-timeline">
