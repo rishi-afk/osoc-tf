@@ -38,7 +38,7 @@ import { FileWithPath } from "react-dropzone";
 import { generateReactHelpers } from "@uploadthing/react/hooks";
 import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { catchError } from "@/lib/utils";
-import { checkIsLoggedIn } from "@/app/actions";
+import { checkIsLoggedIn, registerForAgamya } from "@/app/actions";
 import Link from "next/link";
 import { Icons } from "./icons";
 const FormSchema = z
@@ -142,15 +142,15 @@ export function RegisterForm({ email }: Props) {
           }));
           return formattedAbstract ?? null;
         });
+        if (!abstract || abstract.length === 0)
+          throw new Error(
+            "Some error occured while uploading abstract. Please contact OSOC team."
+          );
+        const abstractURL = abstract[0].url;
+        await registerForAgamya({ ...data, abstract: abstractURL });
         toast({
-          title: "You submitted the following values:",
-          description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-              <code className="text-white">
-                {JSON.stringify(data, null, 2)}
-              </code>
-            </pre>
-          ),
+          title: "Success",
+          description: "Your application for Agamya has been submitted.",
         });
         form.reset();
         setFiles(null);

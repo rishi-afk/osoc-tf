@@ -1,5 +1,9 @@
 "use server";
-import { registerUserForEvent } from "@/lib/schema";
+import {
+  NewAgamyaRegistration,
+  insertIntoAgamya,
+  registerUserForEvent,
+} from "@/lib/schema";
 import { auth, currentUser } from "@clerk/nextjs";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
@@ -36,4 +40,11 @@ export async function register(eventId: number) {
 export async function checkIsLoggedIn() {
   const { userId } = auth();
   if (!userId) throw new Error("Unauthorized");
+}
+
+export async function registerForAgamya(data: NewAgamyaRegistration) {
+  const { userId } = auth();
+  if (!userId) throw new Error("Unauthorized");
+
+  await insertIntoAgamya(data);
 }
