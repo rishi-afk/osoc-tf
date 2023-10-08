@@ -10,6 +10,7 @@ import { SignInButton, currentUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { checkIfRegisteredForAgamya } from "../actions";
 import { Metadata } from "next";
+import ThemeCard from "@/components/theme-card";
 
 export const metadata: Metadata = {
   title: "Agamya: The Hackathon",
@@ -49,7 +50,7 @@ export default async function Agamya() {
           </h3>
           <h1
             className={cn(
-              "text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase leading-none font-bold text-center md:text-left text-[#FF4747] ",
+              "text-6xl md:text-7xl lg:text-8xl xl:text-9xl uppercase text-center md:text-left text-[#FF4747]",
               samarkan.className
             )}
           >
@@ -112,17 +113,15 @@ export default async function Agamya() {
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mb-8 w-full">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div
-                key={i}
-                className="h-96 flex justify-center items-center flex-col gap-4 border bg-opacity-20 border-[#FF4747] rounded-sm"
-              >
-                <div className="w-16 h-16 rounded-full bg-gray-400 flex justify-center items-center">
-                  <Icons.navigation size={32} />
-                </div>
-                <h3 className="text-3xl">Theme #{i}</h3>
-              </div>
-            ))}
+            <ThemeCard title="Road Safety" image="/themes/roadSafety.jpg" />
+            <ThemeCard title="Plagairism Check" image="/themes/plagriasm.jpg" />
+            <ThemeCard title="HealthTech" image="/themes/health.jpg" />
+            <ThemeCard title="Productivity" image="/themes/productivity.png" />
+            <ThemeCard
+              title="Environmental Monitoring"
+              image="/themes/environment.jpg"
+            />
+            <ThemeCard title="NITT Problems" image="/themes/nitt.jpeg" />
           </div>
         </section>
         <section className="w-full grid items-center gap-6 pb-8 pt-6 md:py-10">
@@ -314,6 +313,9 @@ export default async function Agamya() {
                 You strictly need to stick to the theme of your choice when
                 giving the title to your project. That is, your project should
                 not differ from the theme you have chosen while registering.
+              </li>
+              <li>
+                The deadline for abstract submission is 11th October, 11:59 pm.
               </li>
               <li>
                 After the abstract submission, each participant has to submit

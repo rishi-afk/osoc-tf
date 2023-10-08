@@ -14,7 +14,7 @@ export function SiteHeader() {
         <div className="pt-8 md:w-44 md:pt-0">
           <Link href="/">
             <Image
-              src={"/osoc.png"}
+              src={"/tf-logo-white.png"}
               alt="OSOC Logo"
               width={48}
               height={48}

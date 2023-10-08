@@ -212,12 +212,18 @@ export function RegisterForm({ email }: Props) {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="1">Theme 1</SelectItem>
-                      <SelectItem value="2">Theme 2</SelectItem>
-                      <SelectItem value="3">Theme 3</SelectItem>
-                      <SelectItem value="4">Theme 4</SelectItem>
-                      <SelectItem value="5">Theme 5</SelectItem>
-                      <SelectItem value="6">Theme 6</SelectItem>
+                      <SelectItem value="road-safety">Road Safety</SelectItem>
+                      <SelectItem value="plagiarism-check">
+                        Plagiarism Check
+                      </SelectItem>
+                      <SelectItem value="productivity">Productivity</SelectItem>
+                      <SelectItem value="health-tech">HealthTech</SelectItem>
+                      <SelectItem value="nitt-problems">
+                        NITT Problems
+                      </SelectItem>
+                      <SelectItem value="environmental-monitoring">
+                        Environmental Monitoring
+                      </SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
