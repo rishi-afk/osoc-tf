@@ -35,6 +35,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       appearance={{
         baseTheme: dark,
         variables: { colorPrimary: "#FF4747" },
+        elements: {
+          formFieldLabel__emailAddress:
+            "after:content-['(Webmail_ID)'] after:ml-1 after:text-red-500",
+          formFieldLabel__identifier:
+            "after:content-['(Webmail_ID)'] after:ml-1 after:text-red-500",
+        },
       }}
     >
       <html lang="en" suppressHydrationWarning>
