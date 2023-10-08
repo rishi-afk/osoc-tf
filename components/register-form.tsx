@@ -340,7 +340,7 @@ export function RegisterForm({ email }: Props) {
               />
             )}
             <DialogFooter>
-              <Button disabled={isPending} type="submit">
+              <Button className="w-24" disabled={isPending} type="submit">
                 {isPending ? (
                   <Icons.spinner
                     className="animate-spin text-[#ff4747]"

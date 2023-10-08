@@ -1,6 +1,7 @@
 "use server";
 import {
   NewAgamyaRegistration,
+  checkIfAlreadyRegisteredForAgamya,
   insertIntoAgamya,
   registerUserForEvent,
 } from "@/lib/schema";
@@ -47,4 +48,8 @@ export async function registerForAgamya(data: NewAgamyaRegistration) {
   if (!userId) throw new Error("Unauthorized");
 
   await insertIntoAgamya(data);
+}
+
+export async function checkIfRegisteredForAgamya(email: string) {
+  return await checkIfAlreadyRegisteredForAgamya(email);
 }

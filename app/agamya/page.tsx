@@ -1,16 +1,28 @@
 import InfiniteTextScroll from "@/components/infinite-text-scroll";
 import { Separator } from "@/components/ui/separator";
 import { fontMono } from "@/lib/fonts";
-import { cn } from "@/lib/utils";
+import { catchError, cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { Icons } from "@/components/icons";
 import { RegisterForm } from "@/components/register-form";
 import { SignInButton, currentUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import { checkIfRegisteredForAgamya } from "../actions";
+import { toast } from "@/components/ui/use-toast";
 
 export default async function Agamya() {
   const user = await currentUser();
+  let registered = false;
+  if (user?.emailAddresses[0]?.emailAddress) {
+    try {
+      registered = await checkIfRegisteredForAgamya(
+        user.emailAddresses[0].emailAddress
+      );
+    } catch (error) {
+      catchError(error);
+    }
+  }
   return (
     <>
       <main className="relative container flex md:flex-row flex-col items-center justify-center md:justify-between -mt-20 h-screen w-full min-h-[600px]">
@@ -32,7 +44,24 @@ export default async function Agamya() {
           </h1>
           <div className="mt-8 md:mt-16 flex flex-row h-8 md:h-12 gap-8 lg:gap-12 items-center md:justify-start justify-center">
             {!!user ? (
-              <RegisterForm email={user?.emailAddresses[0]?.emailAddress} />
+              !registered ? (
+                <RegisterForm email={user?.emailAddresses[0]?.emailAddress} />
+              ) : (
+                <Button
+                  className="text-green-500 text-lg sm:text-xl md:text-2xl p-0"
+                  variant="link"
+                  onClick={() =>
+                    toast({
+                      title: "Error",
+                      description:
+                        "Looks like you are already registered for Agamya. If this is not the case, please contact OSOC Team.",
+                      variant: "destructive",
+                    })
+                  }
+                >
+                  Registered
+                </Button>
+              )
             ) : (
               <SignInButton mode="modal">
                 <Button
