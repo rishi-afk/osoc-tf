@@ -48,7 +48,7 @@ const MemberCard = ({ member }: Props) => {
             >
               {member.name}
             </h2>
-            <Icons.linkedIn size={32} />
+            <Icons.linkedIn className="text-white" size={32} />
           </div>
         </motion.div>
       </Link>
