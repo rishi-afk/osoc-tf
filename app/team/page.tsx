@@ -39,13 +39,12 @@ const data = [
     name: "Harrsh",
     redirect: "https://in.linkedin.com/in/harshgoyal0128",
   },
-  // {
-  //   id: "7",
-  //   image:
-  //     "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-  //   name: "Ritobrata",
-  //   redirect: "/",
-  // },
+  {
+    id: "7",
+    image: "/rito.jpeg",
+    name: "Ritabrata",
+    redirect: "/team",
+  },
   {
     id: "8",
     image: "/deepak.jpg",
