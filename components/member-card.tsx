@@ -28,7 +28,12 @@ const MemberCard = ({ member }: Props) => {
         },
       }}
     >
-      <Image src={member.image} fill alt="member image" />
+      <Image
+        src={member.image}
+        fill
+        alt="member image"
+        className="object-cover"
+      />
       <Link href={member.redirect}>
         <motion.div
           className="w-full h-full flex items-center justify-center py-6 bg-zinc-800/40 opacity-0 top-0 left-0 absolute"

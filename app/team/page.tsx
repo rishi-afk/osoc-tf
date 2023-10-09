@@ -5,45 +5,58 @@ import { cn } from "@/lib/utils";
 const data = [
   {
     id: "1",
-    image:
-      "https://images.pexels.com/photos/775358/pexels-photo-775358.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    name: "Deepak Suda",
-    redirect: "/",
+    image: "/manvendra.jpg",
+    name: "Manvendra",
+    redirect: "https://www.linkedin.com/in/manvendra-singh-832466146",
   },
   {
     id: "2",
-    image:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    name: "Rito",
-    redirect: "/",
+    image: "/neeraj.jpg",
+    name: "Neeraj",
+    redirect: "https://www.linkedin.com/in/neeraj-kumar-2002",
   },
   {
     id: "3",
-    image:
-      "https://images.pexels.com/photos/4355346/pexels-photo-4355346.jpeg?auto=compress&cs=tinysrgb&w=1600",
-    name: "Nandini Kumari",
-    redirect: "/",
+    image: "/nandini.jpg",
+    name: "Nandini",
+    redirect: "https://in.linkedin.com/in/nandini-sahu-118a40225",
   },
   {
     id: "4",
-    image:
-      "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    name: "Bhushan",
-    redirect: "/",
+    image: "/sachin.jpg",
+    name: "Sachin",
+    redirect: "https://www.linkedin.com/in/sachin-kumar-a7110a183",
   },
   {
     id: "5",
-    image:
-      "https://images.unsplash.com/photo-1628157588553-5eeea00af15c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80",
-    name: "Manvendra",
-    redirect: "/",
+    image: "/tiya.jpg",
+    name: "Tiya",
+    redirect: "https://in.linkedin.com/in/tiya-roy",
   },
   {
     id: "6",
-    image:
-      "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
-    name: "Surendra",
-    redirect: "/",
+    image: "/harsh.jpg",
+    name: "Harrsh",
+    redirect: "https://in.linkedin.com/in/harshgoyal0128",
+  },
+  // {
+  //   id: "7",
+  //   image:
+  //     "https://images.unsplash.com/photo-1639149888905-fb39731f2e6c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
+  //   name: "Ritobrata",
+  //   redirect: "/",
+  // },
+  {
+    id: "8",
+    image: "/deepak.jpg",
+    name: "Deepak",
+    redirect: "https://www.linkedin.com/in/deepaksuda",
+  },
+  {
+    id: "9",
+    image: "/rishikesh.jpeg",
+    name: "Rishikesh",
+    redirect: "https://www.linkedin.com/in/be-rishi",
   },
 ];
 export default function Team() {
