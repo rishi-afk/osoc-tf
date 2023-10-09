@@ -14,7 +14,7 @@ export default function ThemeCard({ title, image }: Props) {
         <div className="flex flex-col justify-center items-center gap-2">
           <h3
             className={
-              "text-4xl font-bold text-center uppercase tracking-wider"
+              "text-4xl font-bold text-center uppercase tracking-wider text-white"
             }
           >
             {title}

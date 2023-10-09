@@ -42,7 +42,7 @@ const MemberCard = ({ member }: Props) => {
           <div className="flex flex-col justify-center items-center gap-2">
             <h2
               className={cn(
-                "text-4xl font-bold text-center uppercase tracking-wider",
+                "text-4xl font-bold text-center uppercase tracking-wider text-white",
                 fontSans.variable
               )}
             >
