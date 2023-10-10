@@ -50,27 +50,27 @@ const FormSchema = z
     member_1: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
         "Invalid roll number."
       ),
     member_2: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
         "Invalid roll number."
       )
       .optional(),
     member_3: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
         "Invalid roll number."
       )
       .optional(),
     member_4: z
       .string()
       .regex(
-        /^205122(00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
+        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
         "Invalid roll number."
       )
       .optional(),
@@ -341,7 +341,7 @@ export function RegisterForm({ email }: Props) {
                   <FormItem>
                     <FormLabel>Team Member #2</FormLabel>
                     <FormControl>
-                      <Input placeholder="205122XXX@nitt.edu" {...field} />
+                      <Input placeholder="20512XXXX@nitt.edu" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -356,7 +356,7 @@ export function RegisterForm({ email }: Props) {
                   <FormItem>
                     <FormLabel>Team Member #3</FormLabel>
                     <FormControl>
-                      <Input placeholder="205122XXX@nitt.edu" {...field} />
+                      <Input placeholder="20512XXXX@nitt.edu" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -371,7 +371,7 @@ export function RegisterForm({ email }: Props) {
                   <FormItem>
                     <FormLabel>Team Member #4</FormLabel>
                     <FormControl>
-                      <Input placeholder="205122XXX@nitt.edu" {...field} />
+                      <Input placeholder="20512XXXX@nitt.edu" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
