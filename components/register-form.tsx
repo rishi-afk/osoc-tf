@@ -171,7 +171,6 @@ export function RegisterForm({ email }: Props) {
         form.reset();
         setFiles(null);
         setOpen(false);
-        redirect("/agamya");
       } catch (err) {
         catchError(err);
       }
