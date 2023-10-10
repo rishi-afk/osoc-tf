@@ -42,6 +42,7 @@ import { checkIsLoggedIn, registerForAgamya } from "@/app/actions";
 import Link from "next/link";
 import { Icons } from "./icons";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 const FormSchema = z
   .object({
     theme: z.string({ required_error: "Please select a theme." }),
@@ -168,9 +169,9 @@ export function RegisterForm({ email }: Props) {
           description: "Your application for Agamya has been submitted.",
         });
         form.reset();
-        revalidatePath("/agamya");
         setFiles(null);
         setOpen(false);
+        redirect("/agamya");
       } catch (err) {
         catchError(err);
       }
