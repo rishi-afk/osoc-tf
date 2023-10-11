@@ -50,30 +50,18 @@ const FormSchema = z
     team_name: z.string().optional(),
     member_1: z
       .string()
-      .regex(
-        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
-        "Invalid roll number."
-      ),
+      .regex(/^(205122|205123)([0-9]{3})@nitt\.edu$/, "Invalid roll number."),
     member_2: z
       .string()
-      .regex(
-        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
-        "Invalid roll number."
-      )
+      .regex(/^(205122|205123)([0-9]{3})@nitt\.edu$/, "Invalid roll number.")
       .optional(),
     member_3: z
       .string()
-      .regex(
-        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
-        "Invalid roll number."
-      )
+      .regex(/^(205122|205123)([0-9]{3})@nitt\.edu$/, "Invalid roll number.")
       .optional(),
     member_4: z
       .string()
-      .regex(
-        /^20512[2-3](00[1-9]|0[1-9][0-9]|1[0-1][0-5])@nitt\.edu$/,
-        "Invalid roll number."
-      )
+      .regex(/^(205122|205123)([0-9]{3})@nitt\.edu$/, "Invalid roll number.")
       .optional(),
     title: z.string().min(2, "Your title looks invalid."),
     abstract: z.unknown().refine((val) => {
