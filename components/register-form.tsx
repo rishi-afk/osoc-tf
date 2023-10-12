@@ -41,8 +41,7 @@ import { catchError } from "@/lib/utils";
 import { checkIsLoggedIn, registerForAgamya } from "@/app/actions";
 import Link from "next/link";
 import { Icons } from "./icons";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+
 const FormSchema = z
   .object({
     theme: z.string({ required_error: "Please select a theme." }),
@@ -136,29 +135,32 @@ export function RegisterForm({ email }: Props) {
   function onSubmit(data: z.infer<typeof FormSchema>) {
     startTransition(async () => {
       try {
-        await checkIsLoggedIn();
-        const f = data.abstract as File[];
-        const abstract = await startUpload(f).then((res) => {
-          const formattedAbstract = res?.map((image) => ({
-            id: image.key,
-            name: image.key.split("_")[1] ?? image.key,
-            url: image.url,
-          }));
-          return formattedAbstract ?? null;
-        });
-        if (!abstract || abstract.length === 0)
-          throw new Error(
-            "Some error occured while uploading abstract. Please contact OSOC team."
-          );
-        const abstractURL = abstract[0].url;
-        await registerForAgamya({ ...data, abstract: abstractURL });
-        toast({
-          title: "Success",
-          description: "Your application for Agamya has been submitted.",
-        });
-        form.reset();
-        setFiles(null);
-        setOpen(false);
+        throw new Error(
+          "Registration for Agamya' 23 is closed. Please contact OSOC team."
+        );
+        // await checkIsLoggedIn();
+        // const f = data.abstract as File[];
+        // const abstract = await startUpload(f).then((res) => {
+        //   const formattedAbstract = res?.map((image) => ({
+        //     id: image.key,
+        //     name: image.key.split("_")[1] ?? image.key,
+        //     url: image.url,
+        //   }));
+        //   return formattedAbstract ?? null;
+        // });
+        // if (!abstract || abstract.length === 0)
+        //   throw new Error(
+        //     "Some error occured while uploading abstract. Please contact OSOC team."
+        //   );
+        // const abstractURL = abstract[0].url;
+        // await registerForAgamya({ ...data, abstract: abstractURL });
+        // toast({
+        //   title: "Success",
+        //   description: "Your application for Agamya has been submitted.",
+        // });
+        // form.reset();
+        // setFiles(null);
+        // setOpen(false);
       } catch (err) {
         catchError(err);
       }
