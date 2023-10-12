@@ -136,7 +136,7 @@ export function RegisterForm({ email }: Props) {
     startTransition(async () => {
       try {
         throw new Error(
-          "Registration for Agamya' 23 is closed. Please contact OSOC team."
+          "Registration for Agamya' 23 is closed. Please contact OSOC team for more details."
         );
         // await checkIsLoggedIn();
         // const f = data.abstract as File[];

@@ -44,6 +44,11 @@ export async function checkIsLoggedIn() {
 }
 
 export async function registerForAgamya(data: NewAgamyaRegistration) {
+  // Stopping registration for agamya
+  throw new Error(
+    "Registration for Agamya' 23 is closed. Please contact OSOC team for more details."
+  );
+
   const { userId } = auth();
   if (!userId) throw new Error("Unauthorized");
 
